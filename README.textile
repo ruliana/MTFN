@@ -1,0 +1,83 @@
+h1. MTFN - MeTaPHoNe
+
+Implementação do algoritmo Metaphone para Português (focado principalmente em nomes brasileiros, mas parece não fazer feio com nomes portugueses).
+
+Baseado "no trabalho da Prefeitura de Várzea Paulista":http://www2.varzeapaulista.sp.gov.br/metaphone e no código de Carlos Costa Jordão. (Veja o código fonte da classe "MetaphonePtBr" para os COPYRIGHTS originais).
+
+h2. Para que serve?
+
+O algoritmo cria uma "chave" baseada na pronúncia mais provável do nome. Essa chave pode ser usada principalmente em pesquisas no banco de dados. Dessa forma, a pesquisa por nomes passa a achar nomes que são fonéticamente parecidos ao invés de somente parecidos na escrita.
+
+Por exemplo, ao procurar por "Carina", você também encontraria: Karina, Carine, Caren, Kharen, Corina, Quirino e variantes...
+
+O quão isso é útil? Bom, acho que qualquer sistema que tenha uma pesquisa por nomes deveria ter um desses :)
+
+h2. Motivação
+
+Os algoritmos para criar chaves fonéticas são quase todos baseados na língua inglesa, o que os torna inúteis para sistemas em português. Por conta disso, comecei a procurar uma implementação de codificação fonética para nossa língua pátria e acabei encontrando o trabalho da Prefeitura de Várzea Paulista (tremendo trabalho legal!!!).
+
+O algoritmo estava em C e cuidei só de passar para Java. Mas tive duas preocupações:
+
+1 - Implementar de uma maneira tão simples que qualquer um que olhar pense consigo: "Que troço besta, achei que fosse mais complicado".
+
+2 - Testar com o maior número possível de nomes para refinar o algoritmo.
+
+Acho que consegui atingir ambos os objetivos (...espero!). Quanto a testar com o maior número possível de nomes, continuo lentamente modificando o algoritmo conforme vou achando casos estranhos. Como isso é uma pesquisa "no braço" por nomes que não se encaixam na fonética, é um trabalho que vai ficando cada vez mais difícil. Se você encontrar coisas esquisitas, por favor, me avise para eu ir melhorando a coisa.
+
+h2. Como usar?
+
+É bem simples, na verdade:
+
+<pre></code>
+	String metaphoneCode = new MetaphonePtBr("Epaminondas").toString();
+	// Deve retornar "EPMN"
+</code></pre>
+
+Só isso, de verdade.
+
+h2. Como funciona?
+
+Códigos metaphone substituem cada "som" da palavra por um equivalente fonético. Abaixo os equivalentes fonéticos:
+
+    * "B" (bacia)
+    * "D" (dado)
+    * "F" (foca)
+    * "G" (gato)
+    * "J" (gente)
+    * "K" (casa)
+    * "L" (lote)
+    * "1" (alho) (é o número "um", não é "L" minúsculo)
+    * "M" (maçã)
+    * "N" (nabo)
+    * "3" (nhoque)
+    * "P" (pau)
+    * "R" (oração)
+    * "2" (arroz)
+    * "S" (centro)
+    * "T" (tatu)
+    * "V" (vila)
+    * "X" (chão)
+    * "Z" (asa)
+
+Todas as vogais são descartadas, exceto se forem a primeira letra do nome, como em "Alexandre" (ALXN) ou "Horácio" (ORS).
+
+h2. O que mais?
+
+Todo código tem pegadinhas e poréns, como esse aqui não é exceção, é bom que você esteja ciente delas antes de usar o código:
+
+1 - A implementação é lenta. Meu foco foi fazer um mecanismo simples e versátil, não rápido. Pensei até em tentar acelerá-lo, mas a transformação de cerca de 100.000 nomes não chegou a demorar um minuto na minha máquina, então, para o que eu quero, está bom. Meu foco nesse projeto vai ser aprimorar os matches e deixar o mecanismo de substituição cada vez mais versátil. Se você quiser mais velocidade, vejo 2 alternativas: 1- use a implementação do pessoal de Várzea Paulista em C (é um único loop com switches... acho difícil existir algo mais rápido) ou 2 - modifique o mecanismo para deixá-lo mais veloz.
+
+2 - *COPYRIGHT* desse projeto. Da minha parte, você é livre para copiar, usar, modificar, vender, fazer-o-que-te-der-na-telha com o código. Você também é livre para me dar os créditos pelo trabalho ou ignorar completamente qualquer menção ao meu nome, faça como estiver a fim :) *Por outro lado*, use esse código "como-está", não garanto nada, nem prometo nada, use por sua própria conta e risco. Você também precisa dar os créditos aos autores originais dos trabalhos, como está no copyright do arquivo "MetaphonePtBr.java".
+
+h2. Só isso?
+
+Algumas pessoas merecem agradecimentos especiais:
+
+- Lawrence Philips, que teve a idéia genial!
+- O povo da prefeitura de Várzea Paulista e a Carlos Costa Jordão (o código em C para portuga é dele). Belíssimo trabalho!
+- Ao Marco "Kiko" Carnut (http://www.postcogito.org) que me ajudou com uma base jóia de nomes próprios para testes já em txt, prontinha pra usar. 
+
+Espero que seja útil. Se estiver usando, me mande um e-mail (sacumé... é uma tremenda  massagem no ego saber que estão usando seu trabalho).  ;)
+
+[]s
+Ronie Uliana  
