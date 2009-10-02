@@ -6,7 +6,7 @@ Baseado "no trabalho da Prefeitura de Várzea Paulista":http://www2.varzeapaulis
 
 h2. Para que serve?
 
-O algoritmo cria uma "chave" baseada na pronúncia mais provável do nome. Essa chave pode ser usada principalmente em pesquisas no banco de dados. Dessa forma, a pesquisa por nomes passa a achar nomes que são fonéticamente parecidos ao invés de somente parecidos na escrita.
+O algoritmo cria uma "chave" baseada na pronúncia mais provável do nome. Essa chave pode ser usada principalmente em pesquisas no banco de dados. Dessa forma, a pesquisa passa a achar nomes que são fonéticamente parecidos ao invés de somente parecidos na escrita.
 
 Por exemplo, ao procurar por "Carina", você também encontraria: Karina, Carine, Caren, Kharen, Corina, Quirino e variantes...
 
@@ -28,9 +28,9 @@ h2. Como usar?
 
 É bem simples, na verdade:
 
-<pre></code>
+<pre><code>
 	String metaphoneCode = new MetaphonePtBr("Epaminondas").toString();
-	// Deve retornar "EPMN"
+	// Deve retornar "EPMNNDS"
 </code></pre>
 
 Só isso, de verdade.
@@ -59,7 +59,7 @@ Códigos metaphone substituem cada "som" da palavra por um equivalente fonético
     * "X" (chão)
     * "Z" (asa)
 
-Todas as vogais são descartadas, exceto se forem a primeira letra do nome, como em "Alexandre" (ALXN) ou "Horácio" (ORS).
+Todas as vogais são descartadas, exceto se forem a primeira letra do nome, como em "Alexandre" (ALXNDR) ou "Horácio" (ORS).
 
 h2. O que mais?
 
