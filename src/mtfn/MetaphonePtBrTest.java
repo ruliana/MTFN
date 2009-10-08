@@ -26,6 +26,9 @@ public class MetaphonePtBrTest {
         assertMetaphoneEquals("IKMM", "HIECKMANN");
         assertMetaphoneEquals("2KRD", "RICCARDO");
         assertMetaphoneEquals("BK2", "Belchior");
+        assertMetaphoneEquals("FB2", "Philber");
+        assertMetaphoneEquals("ABT", "Abbate");
+        
     }
 
     private void assertMetaphoneEquals(String expected, String original) {

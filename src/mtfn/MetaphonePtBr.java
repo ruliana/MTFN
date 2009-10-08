@@ -167,10 +167,9 @@ public class MetaphonePtBr extends Metaphone {
         ignore(VOWEL);
     }
 
-    @Override
     protected void prepare() {
         // Essa letras duplicadas são apenas dor de cabeça. Antes de começar, tiramos o excesso.
         // Otto, Rizzo, Millene, Riccardo (é... com dois "c", achei um desses, é mole?) 
-        removeMultiples(" ", "c", "g", "l", "t", "p", "d", "f", "j", "k", "m", "v", "n", "z");
+        removeMultiples(" ", "b", "c", "g", "l", "t", "p", "d", "f", "j", "k", "m", "v", "n", "z");
     }
 }
