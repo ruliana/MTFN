@@ -1,8 +1,8 @@
 package mtfn;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class MetaphonePtBrFrouxoTest {
 
@@ -26,6 +26,6 @@ public class MetaphonePtBrFrouxoTest {
     }
 
     private void assertMetaphoneEquals(String expected, String original) {
-        assertEquals("Metaphone", expected, new MetaphonePtBrFrouxo(original).toString());
+        assertEquals(expected, new MetaphonePtBrFrouxo(original).toString());
     }
 }
